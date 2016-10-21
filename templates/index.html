@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ title }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{static_url("dist/css/bootstrap.min.css" )}}">
+    <script src="{{static_url("dist/js/jquery-1.10.2.min.js" )}}"></script>
+    <script src="{{static_url("dist/js/bootstrap.min.js" )}}"></script>
+    <style>
+        /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+        .row.content {
+            height: 1500px
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            background-color: white;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+
+            .row.content {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid" dir="rtl">
+    <div class="row content">
+        <div class="col-sm-3 sidenav">
+        <h3>
+        <center>   اخبار استان </center>
+        </h3>
+            <br>
+            <hr>
+
+            {% for dic in data2 %}
+
+            <div>
+                <a href="/news/{{ dic[u'id'] }}"><h2>{{dic[u'title'] }}</h2></a>
+
+                <br>
+             <img src="{{ dic[u'image'] }}" style="width:150px ; height:100px;margin-bottom: 15px;">
+
+              <p></p>
+            </div>
+
+             {% end for %}
+
+
+        </div>
+
+        <div class="col-sm-9">
+            <h4>
+                <center>  IR-NEWS </center>
+                <br>
+                <img src="/static/img/21.jpg" style="width:1110px ; height:100px;margin-bottom: 15px;">
+            </h4>
+
+   <h2> اخبار کشور </h2>
+            {% for dic in data %}
+
+
+            <h2></h2>
+
+            <hr>
+            <a href="/news/{{ dic[u'id'] }}"><h2>{{ dic[u'title'] }}</h2></a>
+
+            <img src="{{ dic[u'image'] }}" style="width: 200px; height:150px;margin-bottom: 15px;">
+
+            <h5><span class="glyphicon glyphicon-time"></span> {{ dic[u'source_name'] }},{{ dic[u'date'] }},{{ dic[u'time'] }}</h5>
+
+            <p>{{ dic[u'summary'] }}</p>
+            <br><br>
+
+            {% end for %}
+
+
+            <hr>
+
+            <hr>
+
+
+
+        </div>
+    </div>
+</div>
+
+<footer class="container-fluid">
+    <center>
+    <p>ir-news</p>
+    </center>
+</footer>
+
+</body>
+</html>
+
